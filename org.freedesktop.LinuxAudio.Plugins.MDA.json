@@ -36,8 +36,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/drobilla/mda-lv2.git",
-                    /* this is ONE commit after v1.2.4: submodule fix */
-                    "commit": "1761c1c97a4a4b9b5dc1bbb5b2784bafa8c7d2d5"
+                    "tag": "v1.2.6",
+                    "commit": "19752af61234581e0f73db539d5609ab14b3d928"
                 },
                 {
                     "type": "file",
