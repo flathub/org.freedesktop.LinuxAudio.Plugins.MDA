@@ -17,27 +17,26 @@
         "shared-modules/linux-audio/lv2.json",
         {
             "name": "mda",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 ./waf configure --prefix=${FLATPAK_DEST} --lv2dir=${FLATPAK_DEST}/lv2",
-                "python3 ./waf",
-                "python3 ./waf install"
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dstrict=true",
+                "-Dlibdir="
             ],
             "cleanup": [
                 "/share/man"
             ],
             "post-install": [
                 "strip ${FLATPAK_DEST}/lv2/*.lv2/*.so",
-                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.MDA.metainfo.xml",
+                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo ../org.freedesktop.LinuxAudio.Plugins.MDA.metainfo.xml",
                 "appstream-compose --basename=org.freedesktop.LinuxAudio.Plugins.MDA --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.LinuxAudio.Plugins.MDA",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/MDA COPYING"
+                "install -Dm644 -t $FLATPAK_DEST/share/licenses/MDA ../LICENSES/*"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.com/drobilla/mda-lv2.git",
-                    "tag": "v1.2.6",
-                    "commit": "19752af61234581e0f73db539d5609ab14b3d928"
+                    "tag": "v1.2.10",
+                    "commit": "da3df70c525f27523bd965e21a38c12f2bf869f6"
                 },
                 {
                     "type": "file",
