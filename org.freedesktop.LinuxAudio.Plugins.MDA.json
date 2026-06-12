@@ -18,7 +18,6 @@
             "name": "mda",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dstrict=true",
                 "--libdir="
             ],
             "cleanup": [
@@ -26,15 +25,15 @@
             ],
             "post-install": [
                 "strip ${FLATPAK_DEST}/lv2/*.lv2/*.so",
-                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo ../org.freedesktop.LinuxAudio.Plugins.MDA.metainfo.xml",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/MDA ../LICENSES/*"
+                "install -Dm644 ../org.freedesktop.LinuxAudio.Plugins.MDA.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo",
+                "install -Dm644 -t $FLATPAK_DEST/share/licenses/${FLATPAK_ID}/mda ../LICENSES/*"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.com/drobilla/mda-lv2.git",
-                    "tag": "v1.2.10",
-                    "commit": "da3df70c525f27523bd965e21a38c12f2bf869f6"
+                    "tag": "v1.2.12",
+                    "commit": "fb85abef3e5400cc8b93fe79b727e8baef9f685c"
                 },
                 {
                     "type": "file",
